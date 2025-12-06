@@ -1,8 +1,10 @@
 # RV32I
 Block 1                  -----------------  Program counter-----------------------
 
-Holds the address of the current instruction
-The calculation of next_pc (increment by 4, branch/jump target) happens outside the PC module
+Holds the address of the current instruction(with respect to clock).
+The calculation of next_pc (increment by 4, branch/jump target) happens outside the PC module.
+->Every instruction fetch depends on the PC. Without it, you can’t get instructions from memory.
+
 
 Block 1                   -------------       ALU        -------------------
 
