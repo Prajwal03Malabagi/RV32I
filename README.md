@@ -45,6 +45,12 @@ WHAT IS AN INSTRUCTION DECODER?
 This block takes a 32-bit instruction (binary machine code)from instruction memory and extracts: opcode,rd,rs1,rs2,funct3,funct7 immediate value (depends on type). Now assign the the extracted to the instruction bit(input) according to ISA given Register Format and for the type which have immediate use the sign extention add extra bit to msb if msb is 1 add 1 if 0 add 0(make 32 bit)(for the type i & s), for the type(B & j lsb will be zero so why waste 1 extra bit so make lsb as 0 and then add remaining extra bit to msb) and for u type we use only upper bit so make remaining bit 0 at lsb.
 
 note-> the opcode,rd,rs1,rs2,funct3,funct7 are the code for alu but immediate is a constant value so we make it 32 bit as alu is of 32-bit.
+
+Block 4          ------------------------  Register  ----------------
+
+Register File stores 32 registers (x0 to x31) Each register is 32 bits.
+
+
 Block 1                   -------------       ALU        -------------------
 
 The RV32I is the 32-bit RISC-V base integer instruction set, a foundational collection of around 40 fixed-length (32-bit) instructions for basic arithmetic (ADD, SUB, XOR, AND, OR), logical shifts (SLL, SRL, SRA), comparisons (SLT, SLTU), loads/stores (LB, LH, LW, SB, SH, SW), jumps (JAL, JALR), and branches (BEQ, BNE, BLT, BGE, BLTU, BGEU). It defines core operations for processors, with instructions categorized into R-type (registers), I-type (immediate), S-type (store), B-type (branch), U-type (upper immediate), and J-type (jump) formats, all 32 bits long. 
