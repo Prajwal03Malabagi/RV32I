@@ -6,6 +6,29 @@ The calculation of next_pc (increment by 4, branch/jump target) happens outside 
 ->Every instruction fetch depends on the PC. Without it, you can’t get instructions from memory.
 
 
+Block 2                 ---------------   Instruction Memory   --------------------------------
+
+Holds all program instructions. The CPU reads a 32-bit instruction at the address specified by the PC.
+input - address from program counter block
+output - 32 bit instruction
+
+How It Works
+
+->The PC provides the address of the instruction to fetch.
+->Instruction memory outputs the 32-bit instruction stored at that address.
+->We use address[5:2] because instructions are word-aligned (4 bytes per instruction).
+
+For a simple single-cycle CPU,No clock is strictly needed if the memory is combinational.
+
+we need add the storage instruction manually, the value are given like 32'h002081b3. This value we got by refering the RISC V ISA ( Instruction Format) 
+for ex : [31:25] funct7    (7 bits)
+[24:20] rs2       (5 bits)
+[19:15] rs1       (5 bits)
+[14:12] funct3    (3 bits)
+[11:7]  rd        (5 bits)
+[6:0]   opcode    (7 bits)
+the opcode- Each Instruction has different opcode, func3 & func7 depend which type of operation to be done, rs1 -value is 1, rs2- value is 2, rd- value is 3.
+
 Block 1                   -------------       ALU        -------------------
 
 The RV32I is the 32-bit RISC-V base integer instruction set, a foundational collection of around 40 fixed-length (32-bit) instructions for basic arithmetic (ADD, SUB, XOR, AND, OR), logical shifts (SLL, SRL, SRA), comparisons (SLT, SLTU), loads/stores (LB, LH, LW, SB, SH, SW), jumps (JAL, JALR), and branches (BEQ, BNE, BLT, BGE, BLTU, BGEU). It defines core operations for processors, with instructions categorized into R-type (registers), I-type (immediate), S-type (store), B-type (branch), U-type (upper immediate), and J-type (jump) formats, all 32 bits long. 
