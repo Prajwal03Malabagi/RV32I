@@ -51,7 +51,9 @@ Block 4          ------------------------  Register  ----------------
 Register File stores 32 registers (x0 to x31) Each register is 32 bits.
 
 
-Block 1                   -------------       ALU        -------------------
+Block 5 & 6                  -------------       ALU        -------------------
+
+First we use alu_control to select which type of instruction and which operation to be done and then that output is sent to alu.
 
 The RV32I is the 32-bit RISC-V base integer instruction set, a foundational collection of around 40 fixed-length (32-bit) instructions for basic arithmetic (ADD, SUB, XOR, AND, OR), logical shifts (SLL, SRL, SRA), comparisons (SLT, SLTU), loads/stores (LB, LH, LW, SB, SH, SW), jumps (JAL, JALR), and branches (BEQ, BNE, BLT, BGE, BLTU, BGEU). It defines core operations for processors, with instructions categorized into R-type (registers), I-type (immediate), S-type (store), B-type (branch), U-type (upper immediate), and J-type (jump) formats, all 32 bits long. 
 
